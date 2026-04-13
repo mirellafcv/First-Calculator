@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadados e links para CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <!-- Conteúdo da página (Título, subtítulo, visor da calculadora, botões e rodapé) -->
+    <h1>Mirella's First Calculator</h1>
+    <h2>First version of this project! Done with HTML + CSS + Python :) </h2>
+    <div class="quadrado">
+        <div class="quadrado2"></div>
+        <div class="quadrado3"></div>
+        <!-- Visor da calculadora + botões -->
+        <input type="text" id="visor" readonly>
+        <button1 type="button" onclick="digitar('1')">1</button1>
+        <button2 type="button" onclick="digitar('2')">2</button2>
+        <button3 type="button" onclick="digitar('3')">3</button3>
+        <button4 type="button" onclick="digitar('4')">4</button4>
+        <button5 type="button" onclick="digitar('5')">5</button5>
+        <button6 type="button" onclick="digitar('6')">6</button6>
+        <button7 type="button" onclick="digitar('7')">7</button7>
+        <button8 type="button" onclick="digitar('8')">8</button8>
+        <button9 type="button" onclick="digitar('9')">9</button9>
+        <button0 type="button" onclick="digitar('0')">0</button0>
+        <buttonDEL type="button" onclick="apagarUltimo()">⌫</buttonDEL>
+        <buttonAC type="button" onclick="limpar()">AC</buttonAC>
+        <buttonMais type="button" onclick="digitar('+')">+</buttonMais>
+        <buttonMenos type="button" onclick="digitar('-')">-</buttonMenos>
+        <buttonVezes type="button" onclick="digitar('*')">*</buttonVezes>
+        <buttonDividir type="button" onclick="digitar('/')">÷</buttonDividir>
+        <buttonPorcento type="button" onclick="porcento()">%</buttonPorcento>
+        <buttonIgual type="button" onclick="calcular()">=</buttonIgual>
+        <buttonPonto type="button" onclick="digitar('.')">.</buttonPonto> <!-- Botão para o ponto decimal -->
+        <buttonGit type="button" onclick="window.location.href='https://github.com/mirellafcv'">◡̈</buttonGit> <!-- Botão para acessar o GitHub -->
+    </div>
+
+<script>
+  function digitar(numero) {
+    //Pega o visor e adiciona o número clicado ao valor atual
+    const visor = document.getElementById('visor');
+    visor.value = visor.value + numero;
+    }
+    //Função para apagar o último caractere do visor
+    const visor = document.getElementById('visor');
+    function apagarUltimo() {
+        visor.value = visor.value.slice(0, -1);
+    }
+    //Função para limpar o visor
+    function limpar() {
+        visor.value = '';
+    }
+    //Função para calcular o resultado da expressão no visor quando o botão "=" for clicado
+    function calcular() {
+        try {
+            const resultado = eval(visor.value);
+            visor.value = resultado;
+        } catch (error) {
+            visor.value = 'Erro';
+        }
+    }
+    //Função para calcular o porcento do valor no visor quando o botão "%" for clicado, ou seja, divide o valor por 100
+    function porcento() {
+        try {
+            const resultado = eval(visor.value) / 100;
+            visor.value = resultado;
+        } catch (error) {
+            visor.value = 'Erro';
+        }
+    }
+
+</script>
+
+    <footer>
+        <!-- Rodapé da página -->
+        <p>Designed by Mirella</p>
+    </footer>
+</body>
+</html>
